@@ -1,24 +1,24 @@
 #pragma once
 
 enum Colors {
-	RESET_COLOR,
-	BLACK_TXT = 30,
-	RED_TXT,
-	GREEN_TXT,
-	YELLOW_TXT,
-	BLUE_TXT,
-	MAGENTA_TXT,
-	CYAN_TXT,
-	WHITE_TXT,
+    RESET_COLOR,
+    BLACK_TXT = 30,
+    RED_TXT,
+    GREEN_TXT,
+    YELLOW_TXT,
+    BLUE_TXT,
+    MAGENTA_TXT,
+    CYAN_TXT,
+    WHITE_TXT,
 
-	BLACK_BKG = 40,
-	RED_BKG,
-	GREEN_BKG,
-	YELLOW_BKG,
-	BLUE_BKG,
-	MAGENTA_BKG,
-	CYAN_BKG,
-	WHITE_BKG	
+    BLACK_BKG = 40,
+    RED_BKG,
+    GREEN_BKG,
+    YELLOW_BKG,
+    BLUE_BKG,
+    MAGENTA_BKG,
+    CYAN_BKG,
+    WHITE_BKG    
 };
 
 void setupConsole(void);
