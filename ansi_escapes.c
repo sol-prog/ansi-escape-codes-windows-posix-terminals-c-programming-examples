@@ -148,11 +148,11 @@ void moveTo(int row, int col) {
 }
 
 void saveCursorPosition(void) {
-    printf("\033%d", 7);
+    printf("\x1b%d", 7);
 }
 
 void restoreCursorPosition(void) {
-    printf("\033%d", 8);
+    printf("\x1b%d", 8);
 }
 
 void getCursorPosition(int *row, int *col) {
