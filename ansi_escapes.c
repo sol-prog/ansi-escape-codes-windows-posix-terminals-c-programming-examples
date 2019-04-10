@@ -1,4 +1,5 @@
 #ifdef _WIN32
+#define  _CRT_SECURE_NO_WARNINGS 1
 #include <windows.h>
 #else
 #include <termios.h>
@@ -7,7 +8,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ansi_escapes.h"
 
 #ifdef _WIN32
 // Some old MinGW/CYGWIN distributions don't define this:
@@ -76,84 +76,6 @@ void restoreConsole(void) {
     tcsetattr(STDIN_FILENO, TCSANOW, &orig_term);
 }
 #endif
-
-void setTextColor(int code) {
-    printf("\x1b[%dm", code);
-}
-
-void setTextColorBright(int code) {
-    printf("\x1b[%d;1m", code);
-}
-
-void setBackgroundColor(int code) {
-    printf("\x1b[%dm", code);
-}
-
-void setBackgroundColorBright(int code) {
-    printf("\x1b[%d;1m", code);
-}
-
-void resetColor(void) {
-    printf("\x1b[%dm", RESET_COLOR);
-}
-
-enum ClearCodes {
-    CLEAR_FROM_CURSOR_TO_END,
-    CLEAR_FROM_CURSOR_TO_BEGIN,
-    CLEAR_ALL
-};
-
-void clearScreen(void) {
-    printf("\x1b[%dJ", CLEAR_ALL);
-}
-
-void clearScreenToBottom(void) {
-    printf("\x1b[%dJ", CLEAR_FROM_CURSOR_TO_END);
-}
-
-void clearScreenToTop(void) {
-    printf("\x1b[%dJ", CLEAR_FROM_CURSOR_TO_BEGIN);
-}
-
-void clearLine(void) {
-    printf("\x1b[%dK", CLEAR_ALL);
-}
-
-void clearLineToRight(void) {
-    printf("\x1b[%dK", CLEAR_FROM_CURSOR_TO_END);
-}
-
-void clearLineToLeft(void) {
-    printf("\x1b[%dK", CLEAR_FROM_CURSOR_TO_BEGIN);
-}
-
-void moveUp(int positions) {
-    printf("\x1b[%dA", positions);
-}
-
-void moveDown(int positions) {
-    printf("\x1b[%dB", positions);
-}
-
-void moveRight(int positions) {
-    printf("\x1b[%dC", positions);
-}
-
-void moveLeft(int positions) {
-    printf("\x1b[%dD", positions);
-}
-
-void moveTo(int row, int col) {
-    printf("\x1b[%d;%df", row, col);
-}
-
-void saveCursorPosition(void) {
-    printf("\x1b%d", 7);
-}
-
-void restoreCursorPosition(void) {
-    printf("\x1b%d", 8);
-}
 
 void getCursorPosition(int *row, int *col) {
     printf("\x1b[6n");
