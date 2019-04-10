@@ -50,7 +50,7 @@ void restoreConsole(void) {
     printf("\x1b[0m");    
     
     // Reset console mode
-    if(!SetConsoleMode(stdoutHandle, outModeInit) && !SetConsoleMode(stdinHandle, inModeInit)) {
+    if(!SetConsoleMode(stdoutHandle, outModeInit) || !SetConsoleMode(stdinHandle, inModeInit)) {
         exit(GetLastError());
     }
 }
